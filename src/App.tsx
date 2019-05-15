@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Password from "./Password";
+import { Password } from "./Password";
 
 const App: React.FC = () => {
   return <Password />;

@@ -1,41 +1,25 @@
-import React from "react";
+import React, { useEffect, useState, SetStateAction, Dispatch } from "react";
 import axios from "axios";
 
-interface P {}
+export const Password = () => {
+  const [password, setPassword] = useState("");
 
-interface S {
-  password: string;
-}
+  useEffect(() => {
+    refreshPassword(setPassword);
+  }, []);
 
-export default class Password extends React.Component<P, S> {
-  constructor(props: P) {
-    super(props);
+  return (
+    <div>
+      <h2>{password}</h2>
+      <button onClick={() => refreshPassword(setPassword)}>Refresh</button>
+    </div>
+  );
+};
 
-    this.state = {
-      password: ""
-    };
-  }
+const refreshPassword = async (
+  setPassword: Dispatch<SetStateAction<string>>
+) => {
+  const res = await axios.post("http://localhost:8080/graphql", "{ password }");
 
-  componentDidMount = async () => {
-    this.refreshPassword();
-  };
-
-  render() {
-    return (
-      <div>
-        <h2>{this.state.password}</h2>
-        <button onClick={this.refreshPassword}>Refresh</button>
-      </div>
-    );
-  }
-
-  private refreshPassword = async () => {
-    const res = await axios.post(
-      "http://localhost:8080/graphql",
-      "{ password }"
-    );
-    const password = res.data.data.password;
-
-    this.setState({ password });
-  };
-}
+  setPassword(res.data.data.password);
+};
