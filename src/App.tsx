@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
+import Password from "./Password";
 
 const App: React.FC = () => {
-  return <p>Hello, World!</p>;
+  return <Password />;
 };
 
 export default App;
