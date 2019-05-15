@@ -19,7 +19,7 @@ export const Password = () => {
 const refreshPassword = async (
   setPassword: Dispatch<SetStateAction<string>>
 ) => {
-  const res = await axios.post("http://localhost:8080/graphql", "{ password }");
+  const res = await axios.post(process.env.REACT_APP_URL!, "{ password }");
 
   setPassword(res.data.data.password);
 };
