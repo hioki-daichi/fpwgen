@@ -37,10 +37,9 @@ const refreshPassword = async (
   useNumber: boolean,
   useSign: boolean
 ) => {
-  const res = await axios.post(
-    process.env.REACT_APP_URL!,
-    `{ password(useNumber: ${useNumber}, useSign: ${useSign}) }`
-  );
+  const res = await axios.get(process.env.REACT_APP_URL!, {
+    params: { useNumber, useSign }
+  });
 
-  setPassword(res.data.data.password);
+  setPassword(res.data);
 };
