@@ -4,7 +4,7 @@
 
 1. **Backend**
     ```shell
-    $ git clone https://github.com/hioki-daichi/password-generator-api
+    $ git clone https://github.com/hioki-daichi/go-password-generator-api
     $ cd password-generator-api
     $ go run main.go
     ```
