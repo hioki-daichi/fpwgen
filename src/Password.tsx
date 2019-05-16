@@ -1,5 +1,5 @@
 import React, { useEffect, useState, SetStateAction, Dispatch } from "react";
-import axios from "axios";
+import { PasswordGenerator } from "./PasswordGenerator";
 
 export const Password = () => {
   const [password, setPassword] = useState("");
@@ -32,14 +32,11 @@ export const Password = () => {
   );
 };
 
-const refreshPassword = async (
+const refreshPassword = (
   setPassword: Dispatch<SetStateAction<string>>,
   useNumber: boolean,
   useSign: boolean
 ) => {
-  const res = await axios.get(process.env.REACT_APP_URL!, {
-    params: { useNumber, useSign }
-  });
-
-  setPassword(res.data);
+  const g = new PasswordGenerator(useNumber, useSign);
+  setPassword(g.generate());
 };
