@@ -1,4 +1,4 @@
-# password-generator
+# fpwgen
 
 ## How to develop
 
