@@ -1,5 +1,7 @@
 # fpwgen
 
+![](demo.gif)
+
 ## How to develop
 
 1. `$ npm install`
